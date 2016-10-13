@@ -11,8 +11,8 @@
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/contact_list">
-
+        android:id="@+id/contact_list"
+        android:descendantFocusability="blocksDescendants">
     </ListView>
 
 </android.support.design.widget.CoordinatorLayout>
