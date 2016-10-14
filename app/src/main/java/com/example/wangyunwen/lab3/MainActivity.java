@@ -36,11 +36,14 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(MainActivity.this, info.class);
                 Bundle bundle = new Bundle();
-                Log.d("tag", list.toString());
-                Log.d("tag", "-------position="+position+"id="+id);
-                Log.d("tag", list.get(position).toString());
-                if (list.get(position) == null) Log.d("tag", "contact is null in main");
-                bundle.putSerializable("contact", list.get(position));
+                Contact c = list.get(position);
+                bundle.putString("name", c.getName());
+                bundle.putString("phoneNum", c.getPhoneNum());
+                bundle.putString("location", c.getLocation());
+                bundle.putString("category", c.getCategory());
+                bundle.putString("bg", "#"+c.getBackgroundColor());
+                intent.putExtras(bundle);
+                //bundle.putSerializable("contact", list.get(position));
                 //intent.putExtra("id", id);
                 //startActivityForResult(intent, REQUEST_CODE);
                 startActivity(intent);

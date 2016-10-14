@@ -25,19 +25,23 @@ public class info extends AppCompatActivity {
         //View rootView = LayoutInflater.from(context).inflate(R.layout.activity_info,null);
 
         Intent intent = this.getIntent();
-        Contact contact = (Contact) intent.getSerializableExtra("contact");
+        Bundle bundle = (Bundle) intent.getExtras();
+        //Contact contact = (Contact) intent.getSerializableExtra("contact");
 
-        if (contact == null) Log.d("tag", "contact is null");
-        //System.console().printf(contact);
-
-        RelativeLayout head_bar = (RelativeLayout) findViewById(R.id.head_bar);
         //head_bar.setBackground();
         //head_bar.setBackgroundColor(Color.parseColor(contact.getBackgroundColor()));
 
+        RelativeLayout head_bar = (RelativeLayout) findViewById(R.id.head_bar);
         TextView name = (TextView) findViewById(R.id.name);
         TextView phoneNum = (TextView) findViewById(R.id.phoneNum);
         TextView category = (TextView) findViewById(R.id.category);
         TextView location = (TextView) findViewById(R.id.location);
+
+        name.setText(bundle.getString("name"));
+        phoneNum.setText(bundle.getString("phoneNum"));
+        category.setText(bundle.getString("category"));
+        location.setText(bundle.getString("location"));
+        head_bar.setBackgroundColor(Color.parseColor(bundle.getString("bg")));
 
 //        name.setText(contact.getName());
 //        phoneNum.setText(contact.getPhoneNum());
