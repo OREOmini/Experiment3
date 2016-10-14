@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.content.Intent;
 import android.widget.Toast;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         putData();
 
-        ListView contact_list = (ListView) findViewById(R.id.contact_list);
+        final ListView contact_list = (ListView) findViewById(R.id.contact_list);
         MyAdapter myAdapter = new MyAdapter(this, list);
         contact_list.setAdapter(myAdapter);
 
@@ -34,7 +35,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(MainActivity.this, info.class);
-                intent.putExtra("activity_main", "data");
+                Bundle bundle = new Bundle();
+                Log.d("tag", list.toString());
+                Log.d("tag", "-------position="+position+"id="+id);
+                Log.d("tag", list.get(position).toString());
+                if (list.get(position) == null) Log.d("tag", "contact is null in main");
+                bundle.putSerializable("contact", list.get(position));
+                //intent.putExtra("id", id);
                 //startActivityForResult(intent, REQUEST_CODE);
                 startActivity(intent);
             }

@@ -1,9 +1,10 @@
 package com.example.wangyunwen.lab3;
 
+import java.io.Serializable;
 /**
  * Created by wangyunwen on 16/10/13.
  */
-public class Contact {
+public class Contact implements Serializable {
     private String name;
     private String phoneNum;
     private String location;
@@ -18,19 +19,19 @@ public class Contact {
         backgroundColor = bc;
     }
 
-    String getName() {
+    public String getName() {
         return name;
     }
-    String getPhoneNum() {
+    public String getPhoneNum() {
         return phoneNum;
     }
-    String getCategory() {
+    public String getCategory() {
         return category;
     }
-    String getLocation() {
+    public String getLocation() {
         return location;
     }
-    String getBackgroundColor() {
+    public String getBackgroundColor() {
         return backgroundColor;
     }
 }
